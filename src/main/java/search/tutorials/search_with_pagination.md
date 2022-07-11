@@ -134,9 +134,8 @@ You need to receive the ```next_page_token```, set it to a request field ```page
 
     ```
     String nextPageToken = searchResponseFirstPage.getNextPageToken();
-    SearchRequest searchRequestNextPage = getSearchRequest("Hoodie", pageSize, offset, nextPageToken);
-    SearchResponse searchResponseNextPage = getSearchServiceClient().search(searchRequestNextPage).getPage().getResponse();
-
+    SearchRequest searchRequestNextPage = searchRequest.toBuilder().setPageToken(nextPageToken).build();
+    SearchResponse searchResponseNextPage = client.search(searchRequestNextPage).getPage().getResponse();
     System.out.printf("Next page search results: %s", searchResponseNextPage);
     ```
 
