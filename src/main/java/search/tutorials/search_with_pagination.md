@@ -166,9 +166,9 @@ You have requested the second page with 6 products per page using ```nextPageTok
 
 1. Find the <walkthrough-editor-select-regex filePath="cloudshell_open/interactive-tutorials/src/main/java/search/SearchWithPagination.java" regex="PASTE CALL WITH OFFSET HERE">comment</walkthrough-editor-select-regex> and paste this piece of code:
     ```
-    SearchRequest searchRequestSecondPage = getSearchRequest("Hoodie", pageSize, offset, pageToken);
-    SearchResponse searchResponseSecondPage = getSearchServiceClient().search(searchRequestSecondPage).getPage().getResponse();
-
+    SearchRequest searchRequestSecondPage = searchRequest.toBuilder().setOffset(offset).build();
+    SearchResponse searchResponseSecondPage = client.search(searchRequestSecondPage).getPage().getResponse();
+    
     System.out.printf("Second page search results: %s", searchResponseSecondPage);
     ```
 
