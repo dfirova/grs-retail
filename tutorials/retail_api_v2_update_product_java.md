@@ -179,6 +179,16 @@ The product object with updated fields is already preset in generateProductForUp
 
 2. The Retail API returns the created product, the update request and the updated product. Check the output in the Terminal.
 
+## Update the product using an update mask
+
+For examples look into Python and JS tutorials.
+
+1. To update some fields in the original product, add the updateMask field in the getUpdateProductRequest method:
+
+```
+    updateProductRequest = updateProductRequest.toBuilder().setUpdateMask(FieldMask.newBuilder().addPaths("title").build()).build();
+   ```
+
 ## Congratulations
 
 <walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
